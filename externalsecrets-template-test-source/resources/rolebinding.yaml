@@ -1,0 +1,14 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: externalsecrets-template-test-source
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: externalsecrets-template-test-source
+subjects:
+  - kind: ServiceAccount
+    name: externalsecrets-template-test-dest
+    namespace: externalsecrets-template-test-dest

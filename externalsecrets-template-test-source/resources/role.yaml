@@ -1,0 +1,21 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: externalsecrets-template-test-source
+rules: # Limited role for read-access to a single named secret resource, with serviceAccount auth permitted (via selfsubjectrulesreviews.authorization.k8s.io)
+  - apiGroups: [""]
+    resources:
+      - secrets
+    resourceNames: ["externalsecrets-template-test-source"]
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - selfsubjectrulesreviews
+    verbs:
+      - create
